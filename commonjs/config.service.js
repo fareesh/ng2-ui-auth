@@ -212,10 +212,20 @@ var ConfigService = (function () {
     }
     ConfigService.prototype.getHttpHost = function (path) {
         if (path === void 0) { path = ''; }
-        return window.location.origin + path;
+        if(typeof window != "undefined"){
+          return window.location.origin + path;
+        }
+        else {
+            return "";
+        }
     };
     ConfigService.prototype.isCordovaApp = function () {
-        return !!window['cordova'];
+        if(typeof window != "undefined"){
+          return !!window['cordova'];
+        }
+        else {
+          return false;
+        }
     };
     ConfigService = __decorate([
         core_1.Injectable(), 
